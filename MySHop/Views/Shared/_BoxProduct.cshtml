@@ -1,0 +1,32 @@
+﻿@model Product
+
+<div class="col-md-4 mb-4">
+    <div class="card shadow-lg border-0 h-100 position-relative hover-card">
+
+        <!-- برچسب تخفیف -->
+        <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+            -20%
+        </span>
+
+        <!-- عکس محصول -->
+        <div class="card-img-container" style="height:250px; overflow:hidden;">
+            <img src="~/images/@(Model.Id).jpg"
+                 class="card-img-top w-100 h-100"
+                 alt="@Model.Name"
+                 style="object-fit:contain; transition: transform 0.3s;">
+        </div>
+
+        <!-- متن کارت -->
+        <div class="card-body text-center">
+            <h5 class="card-title fw-bold">@Model.Name</h5>
+            @* <p class="text-muted mb-2">قیمت: 12,500,000 تومان</p> *@
+
+            <a asp-controller="Home"
+               asp-action="Detail"
+               asp-route-id="@Model.Id"
+               class="btn btn-primary rounded-pill px-4 mt-2 hover-btn">
+                مشاهده جزئیات
+            </a>
+        </div>
+    </div>
+</div>

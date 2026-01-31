@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "فروشگاه خفن من ";
+}
+
+<div class="text-center">
+    <h1 class="display-4">به فروشگاه ما خوش آمدید</h1>
+    <hr/>
+    <div class="row text-center mt-4">
+    @foreach(var i in Model)
+    {
+           <partial name="_BoxProduct" model="@i" />
+    }
+    </div>
+</div>
+<style>
+    /* افکت هاور روی کارت */
+    .hover-card:hover img {
+        transform: scale(1.1);
+    }
+
+    /* انیمیشن دکمه هنگام هاور */
+    .hover-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        transition: all 0.3s;
+    }
+
+    /* کارت‌ها گوشه گرد */
+    .card {
+        border-radius: 15px;
+    }
+</style>

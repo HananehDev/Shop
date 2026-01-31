@@ -1,0 +1,92 @@
+﻿@model DetailsViewModel
+@{
+    ViewData["Title"] = "جزییات " + Model.products.Name;
+}
+
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <!-- عکس محصول -->
+        <div class="col-md-6 text-center">
+            <img src="~/images/@(Model.products.Id).jpg"
+                 class="img-fluid shadow rounded"
+                 alt="@Model.products.Name"
+                 style="max-height:400px; object-fit:contain;">
+        </div>
+
+        <!-- جزئیات محصول -->
+        <div class="col-md-6">
+            <h2 class="fw-bold">@Model.products.Name</h2>
+
+            <p class="text-muted mt-2">@Model.products.Description</p>
+
+            <!-- قیمت محصول -->
+            @if (Model.products.item != null)
+            {
+                <h4 class="text-success fw-bold mt-3">
+                    قیمت: @Model.products.item.Price.ToString("N0") تومان
+                </h4>
+            }
+            else
+            {
+                <h4 class="text-secondary mt-3">قیمت موجود نیست</h4>
+            }
+
+            <!-- دسته بندی ها با چک Null -->
+            @if (Model.categories != null && Model.categories.Any())
+            {
+                <p class="mt-3">
+                    دسته‌بندی‌ها:
+                    @foreach(var cat in Model.categories)
+                    {
+                        <span class="badge bg-info text-dark me-1">@cat.Title</span>
+                    }
+                </p>
+            }
+            else
+            {
+                <p class="mt-3 text-muted">دسته‌بندی ندارد</p>
+            }
+
+            <!-- دکمه‌ها -->
+            <div class="mt-4 d-flex justify-content-center gap-3">
+                <!-- برگشت به فروشگاه -->
+                <a href="/" class="btn btn-secondary rounded-pill px-4 me-2">
+                    بازگشت به فروشگاه
+                </a>
+
+                <!-- افزودن به سبد خرید فقط اگر Item موجود باشد -->
+                
+                    <form asp-controller="Home"
+                          asp-action="AddToCart"
+                          asp-route-itemId="@Model.products.item.Id"
+                          method="post"
+                          class="d-inline">
+                        <input type="hidden" name="quantity" value="1" />
+                        <button type="submit" class="btn btn-success rounded-pill px-4">
+                            افزودن به سبد خرید 🛒
+                        </button>
+                    </form>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+/* سایه و گرد بودن تصویر */
+img.shadow {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-radius: 15px;
+}
+
+/* افکت hover روی دکمه‌ها */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+}
+</style>

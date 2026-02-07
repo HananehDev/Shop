@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MySHop.Data;
+using MySHop.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,11 @@ builder.Services.AddDbContext<MyShopContext>(Options =>
 {
     Options.UseSqlServer("Data Source=HAYDEN\\HAYDEN_INSTANCE ; Initial Catalog=MyShop_Core_DB ; Integrated Security=true  ; TrustServerCertificate=True");
 });
+
+// service_Scope_me
+#region IOC
+builder.Services.AddScoped<IGroupRepository, GroupRepository>();
+#endregion
 
 var app = builder.Build();
 
@@ -35,3 +41,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

@@ -138,3 +138,4 @@ E:\visualstudio\C#\MySHop\MySHop\bin\Debug\net8.0\runtimes\win\lib\net6.0\System
 E:\visualstudio\C#\MySHop\MySHop\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\visualstudio\C#\MySHop\MySHop\obj\Debug\net8.0\MySHop.csproj.AssemblyReference.cache
 E:\visualstudio\C#\MySHop\MySHop\obj\Debug\net8.0\MySHop.csproj.Up2Date
+E:\visualstudio\C#\MySHop\MySHop\obj\Debug\net8.0\MySHop.sourcelink.json

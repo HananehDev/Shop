@@ -1,29 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.IdentityModel.Tokens;
 using MySHop.Data;
+using MySHop.Data.Repositories;
 using MySHop.Models;
 
 namespace MySHop.Components
 {
     public class ProductGroupsComponent : ViewComponent
     {
-        private MyShopContext _context;
-
-        public ProductGroupsComponent(MyShopContext Context)
+        private IGroupRepository _groupRepository;
+        public ProductGroupsComponent(IGroupRepository groupRepository)
         {
-            _context = Context;
+            _groupRepository = groupRepository;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var categories = _context.Categories
-                .Select(c => new ShowGroupViewModel()
-                {
-                    GruopId = c.Id,
-                    GroupName = c.Title,
-                    ProductCount = _context.categoryToProducts.Count(g => g.CategoryId == c.Id)
-                }).ToList();
-            return View("/Views/Component/ProductGroupsComponent.cshtml", categories);   
+            
+            return View("/Views/Component/ProductGroupsComponent.cshtml", _groupRepository.GetGroupForShow() );   
         }
     }
 }

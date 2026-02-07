@@ -13,6 +13,7 @@ namespace MySHop.Data
         public DbSet<Product> products { get; set; }
         public DbSet<CategoryToProduct> categoryToProducts { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<Users> Users { get; set; }
         //public DbSet<Cart> carts { get; set; }
 
 

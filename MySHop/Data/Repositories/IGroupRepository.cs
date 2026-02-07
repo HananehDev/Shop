@@ -19,7 +19,7 @@ namespace MySHop.Data.Repositories
 
         public IEnumerable<Category> GetAllCategories()
         {
-            throw new NotImplementedException();
+            return _context.Categories;
         }
 
         public IEnumerable<ShowGroupViewModel> GetGroupForShow()

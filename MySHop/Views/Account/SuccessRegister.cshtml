@@ -1,0 +1,82 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "SuccessRegister";
+}
+
+
+<div class="success-container">
+    <div class="success-card">
+        <div class="icon">
+            ✅
+        </div>
+        <h2>ثبت نام با موفقیت انجام شد!</h2>
+        <p>حساب کاربری شما با موفقیت ساخته شد. حالا می‌توانید وارد شوید و خرید کنید.</p>
+        <a asp-controller="Account" asp-action="Login" class="btn btn-login">
+              ورود به حساب کاربری
+        </a>
+    </div>
+</div>
+
+<style>
+    /* Container */
+    .success-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        background: linear-gradient(135deg, #43e97b, #38f9d7);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Card */
+    .success-card {
+        background: #fff;
+        padding: 40px 30px;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+        /* Icon */
+        .success-card .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        /* Title */
+        .success-card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Paragraph */
+        .success-card p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+    /* Button */
+    .btn-login {
+        display: inline-block;
+        padding: 12px 25px;
+        border-radius: 50px;
+        background: #43e97b;
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+        .btn-login:hover {
+            background: #38f9d7;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(56,249,215,0.3);
+        }
+
+</style>
+

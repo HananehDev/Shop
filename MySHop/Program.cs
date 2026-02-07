@@ -17,6 +17,8 @@ builder.Services.AddDbContext<MyShopContext>(Options =>
 // service_Scope_me
 #region IOC
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
+builder.Services.AddScoped<IUserRepository, UserReposirory>();
+
 #endregion
 
 var app = builder.Build();

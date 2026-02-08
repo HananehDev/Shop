@@ -27,4 +27,24 @@ namespace MySHop.Models
 
 
     }
+
+    public class LoginViewModel
+    {
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید ")]
+        [MaxLength(300)]
+        [EmailAddress]
+        [Display(Name = "ایمیل")]
+        public string Email { get; set; }
+
+
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید ")]
+        [MaxLength(50)]
+        [DataType(DataType.Password)]
+        [Display(Name = "کلمه عبور")]
+        public string Password { get; set; }
+
+        [Display(Name ="مرا به خاطر بسپار")]
+        public bool RememberMe { get; set; }
+
+    }
 }

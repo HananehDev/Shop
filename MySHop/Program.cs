@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MySHop.Data;
@@ -21,6 +22,17 @@ builder.Services.AddScoped<IUserRepository, UserReposirory>();
 
 #endregion
 
+#region Authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option =>
+    {
+        option.LoginPath = "/Account/Login";
+        option.LogoutPath = "/Account/Logout";
+        option.ExpireTimeSpan = TimeSpan.FromDays(10);
+    });
+#endregion Authentication
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,6 +47,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

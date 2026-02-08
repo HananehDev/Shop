@@ -6,7 +6,7 @@ namespace MySHop.Data.Repositories
     {
         bool IsExistuserByEmail(string email);
         void AddUser(Users user);
-
+        Users GetUserForLogin(string email , string password);
     }
 
     public class UserReposirory : IUserRepository
@@ -23,10 +23,18 @@ namespace MySHop.Data.Repositories
 
         }
 
+
         public bool IsExistuserByEmail(string email)
         {
             return _Context.Users.Any(x => x.Email == email);
 
+        }
+
+        public Users GetUserForLogin(string email, string password)
+        {
+            return _Context.Users
+                .SingleOrDefault(u => u.Email == email && u.Password == password);
+                
         }
     }
 }

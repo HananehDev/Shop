@@ -1,0 +1,139 @@
+﻿@model MySHop.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "ورود";
+}
+
+<div class="login-container">
+    <div class="login-card">
+        <h2 class="title">ورود به حساب کاربری</h2>
+        <p class="subtitle">خوش برگشتی 👋 وارد حسابت شو</p>
+
+        <form asp-action="Login" method="post">
+
+            <!-- ایمیل -->
+            <div class="mb-3">
+                <input asp-for="Email" class="form-control" placeholder="ایمیل" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- کلمه عبور -->
+            <div class="mb-3">
+                <input asp-for="Password" type="password" class="form-control" placeholder="کلمه عبور" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <!-- مرا به خاطر بسپار -->
+            <div class="remember-me mb-3">
+                <input asp-for="RememberMe" type="checkbox" />
+                <label asp-for="RememberMe">مرا به خاطر بسپار</label>
+            </div>
+
+            <!-- دکمه ورود -->
+            <button type="submit" class="btn-login w-100">ورود</button>
+        </form>
+
+        <!-- لینک ثبت نام -->
+        <p class="register-link mt-3">
+            حساب کاربری نداری؟
+            <a asp-controller="Account" asp-action="Register">ثبت نام</a>
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    /* Container */
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    /* Card */
+    .login-card {
+        background: #fff;
+        padding: 40px 30px;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Titles */
+    .login-card .title {
+        font-size: 26px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .login-card .subtitle {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    /* Inputs */
+    .form-control {
+        padding: 12px 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+    }
+
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 8px rgba(102,126,234,0.4);
+    }
+
+    /* Remember me */
+    .remember-me {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    /* Button */
+    .btn-login {
+        padding: 12px;
+        border-radius: 50px;
+        border: none;
+        background: #667eea;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn-login:hover {
+        background: #5a67d8;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 15px rgba(102,126,234,0.3);
+    }
+
+    /* Register link */
+    .register-link {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .register-link a {
+        color: #667eea;
+        text-decoration: none;
+    }
+
+    .register-link a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+

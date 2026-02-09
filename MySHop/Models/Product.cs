@@ -10,5 +10,7 @@
         //Navigation property
         public ICollection<CategoryToProduct> CategoryToProducts { get; set; }
         public Item item { get; set; }
+
+        public List<OrderDetail> OrderDetail { get; set; }
     }
 }

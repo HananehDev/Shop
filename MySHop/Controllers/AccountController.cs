@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using MySHop.Data.Repositories;
 using MySHop.Models;
 using System.Security.Claims;
@@ -59,7 +60,7 @@ namespace MySHop.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginViewModel login)
+        public async  Task<IActionResult> Login(LoginViewModel login)
         {
             if (!ModelState.IsValid)
             {
@@ -93,7 +94,7 @@ namespace MySHop.Controllers
                 IsPersistent = login.RememberMe
             };
 
-            HttpContext.SignInAsync(principal, properties);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal, properties);
 
 
             return Redirect("/");

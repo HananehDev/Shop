@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MySHop.Data;
@@ -10,7 +12,7 @@ namespace MySHop.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private MyShopContext _context; 
-        private static Cart _cart = new Cart();
+        
 
         public HomeController(ILogger<HomeController> logger , MyShopContext context)
         {
@@ -50,6 +52,7 @@ namespace MySHop.Controllers
             return View(vm); 
         }
 
+        [Authorize]
         public IActionResult AddToCart(int itemId)
         {
             var product = _context.products.Include(p => p.item)
@@ -57,31 +60,68 @@ namespace MySHop.Controllers
             
             if(product != null)
             {
-                var CartItem = new CartItem()
+               
+                int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier).ToString());
+                var order = _context.orders.FirstOrDefault(o => o.UserId==userId && !o.IsFinally);
+                if(order != null)
                 {
-                    Item = product.item,
-                    Quantity =1 
-
-                };
-                _cart.AddItem(CartItem);
+                    var orderDetail = _context.ordersDetails.FirstOrDefault(d  => d.OrderId==order.OrderId && d.ProductID ==product.Id);
+                    if (orderDetail != null)
+                    {
+                        orderDetail.Count += 1;
+                    }
+                    else
+                    {
+                        _context.ordersDetails.Add(new OrderDetail()
+                        {
+                            OrderId = order.OrderId,
+                            ProductID = product.Id,
+                            price = product.item.Price,
+                            Count = 1
+                        });
+                    }
+                }
+                else
+                {
+                    order = new Order()
+                    {
+                        IsFinally = false,
+                        CreateDate = DateTime.Now,
+                        UserId = userId
+                    };
+                    _context.orders.Add(order);
+                    _context.SaveChanges();
+                    _context.ordersDetails.Add(new OrderDetail()
+                    {
+                        OrderId = order.OrderId,
+                        ProductID = product.Id,
+                        price=product.item.Price,
+                        Count =1
+                    });
+                }
+                _context.SaveChanges();
             }
             return RedirectToAction("ShowCart"); 
         }
 
-        public IActionResult RemoveCart(int itemId)
+        [Authorize]
+        public IActionResult RemoveCart(int DetailId)
         {
-            _cart.RemoveItem(itemId);
+            var orederDetail = _context.ordersDetails.Find(DetailId);
+            _context.Remove(orederDetail);
+            _context.SaveChanges();
             return RedirectToAction("ShowCart");
         }
 
+        [Authorize]
         public IActionResult ShowCart()
         {
-            var cartVM = new CartViewModel()
-            {
-                CartItems = _cart.CartItems,
-                TotalOrder = _cart.CartItems.Sum(c => c.GetTotalPrice())
-            };
-            return View(cartVM); 
+            int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier).ToString());
+            var order = _context.orders.Where(o =>o.UserId==userId && !o.IsFinally)
+                .Include(o=>o.OrderDetails)
+                .ThenInclude(o=> o.product)
+                .FirstOrDefault();
+            return View(order);
         }
 
         [Route ("ContactUs")]

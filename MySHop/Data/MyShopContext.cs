@@ -14,6 +14,8 @@ namespace MySHop.Data
         public DbSet<CategoryToProduct> categoryToProducts { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<Order> orders { get; set; }
+        public DbSet<OrderDetail> ordersDetails { get; set; }    
         //public DbSet<Cart> carts { get; set; }
 
 

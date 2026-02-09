@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MySHop.Data;
 
@@ -11,9 +12,11 @@ using MySHop.Data;
 namespace MySHop.Migrations
 {
     [DbContext(typeof(MyShopContext))]
-    partial class MyShopContextModelSnapshot : ModelSnapshot
+    [Migration("20260208235420_ChangeOrderDetailTBl")]
+    partial class ChangeOrderDetailTBl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,9 +214,12 @@ namespace MySHop.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<int>("usersUserId")
+                        .HasColumnType("int");
+
                     b.HasKey("OrderId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("usersUserId");
 
                     b.ToTable("orders");
                 });
@@ -349,19 +355,19 @@ namespace MySHop.Migrations
 
             modelBuilder.Entity("MySHop.Models.Order", b =>
                 {
-                    b.HasOne("MySHop.Models.Users", "User")
-                        .WithMany("Orders")
-                        .HasForeignKey("UserId")
+                    b.HasOne("MySHop.Models.Users", "users")
+                        .WithMany("orders")
+                        .HasForeignKey("usersUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("users");
                 });
 
             modelBuilder.Entity("MySHop.Models.OrderDetail", b =>
                 {
                     b.HasOne("MySHop.Models.Order", "order")
-                        .WithMany("OrderDetails")
+                        .WithMany("orders")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -384,7 +390,7 @@ namespace MySHop.Migrations
 
             modelBuilder.Entity("MySHop.Models.Order", b =>
                 {
-                    b.Navigation("OrderDetails");
+                    b.Navigation("orders");
                 });
 
             modelBuilder.Entity("MySHop.Models.Product", b =>
@@ -399,7 +405,7 @@ namespace MySHop.Migrations
 
             modelBuilder.Entity("MySHop.Models.Users", b =>
                 {
-                    b.Navigation("Orders");
+                    b.Navigation("orders");
                 });
 #pragma warning restore 612, 618
         }

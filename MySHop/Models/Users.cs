@@ -16,6 +16,9 @@ namespace MySHop.Models
         [Required]
         public DateTime DateRegister { get; set; }
         public bool IsAdmin { get; set; }
+
+        //
+        public List<Order> Orders { get; set; }
         
     }
 }

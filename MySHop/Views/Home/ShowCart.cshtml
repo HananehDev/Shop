@@ -1,74 +1,82 @@
-﻿@model CartViewModel
+﻿@model Order
 @{
     ViewData["Title"] = "سبد خرید ";
 }
 
-<div class="container mt-5">
+@if(Model != null)
+{
+    <div class="container mt-5">
 
-    <h2 class="mb-4 text-center">سبد خرید شما</h2>
+        <h2 class="mb-4 text-center">سبد خرید شما</h2>
 
-    @if (Model.CartItems != null && Model.CartItems.Any())
-    {
-        <table class="table table-hover table-striped align-middle text-center">
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col">کالا</th>
-                    <th scope="col">تعداد</th>
-                    <th scope="col">قیمت</th>
-                    <th scope="col">حذف</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var ci in Model.CartItems)
-                {
+        @if (Model.OrderDetails != null && Model.OrderDetails.Any())
+        {
+            <table class="table table-hover table-striped align-middle text-center">
+                <thead class="table-dark">
                     <tr>
-                        <td>@ci.Item.Product.Name</td>
-                        <td>@ci.Quantity</td>
-                        <td>@ci.GetTotalPrice().ToString("N0") تومان</td>
-                        <td>
-                            <form asp-controller="Home" asp-action="RemoveCart" asp-route-itemId="@ci.Item.Id" method="post">
-                                <input type="hidden" name="itemId" value="@ci.Item.Id" />
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                    ❌
-                                </button>
-                            </form>
-                        </td>
+                        <th scope="col">کالا</th>
+                        <th scope="col">تعداد</th>
+                        <th scope="col">قیمت</th>
+                        <th scope="col">حذف</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var o in Model.OrderDetails)
+                    {
+                        <tr>
+                            <td>@o.product.Name</td>
+                            <td>@o.Count</td>
+                            <td>@(o.Count * o.price) تومان</td>
+                            <td>
+                                <form asp-controller="Home" asp-action="RemoveCart" asp-route-detailid="@o.DetailId" method="post">
+                                    <input type="hidden" name="itemId" value="@o.ProductID" />
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        ❌
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
 
-        <!-- قیمت کل -->
-        <div class="d-flex justify-content-end mt-3">
-            <h4 class="fw-bold">قیمت کل: @Model.TotalOrder.ToString("N0") تومان</h4>
-        </div>
+            <!-- قیمت کل -->
+            <div class="d-flex justify-content-end mt-3">
+                <h4 class="fw-bold">قیمت کل: @Model.OrderDetails.Sum(s=>s.Count * s.price).ToString("N0") تومان</h4>
+            </div>
 
-        <!-- دکمه ادامه خرید یا پرداخت -->
-        <div class="d-flex justify-content-end mt-4">
-            <a href="/" class="btn btn-primary rounded-pill px-4 me-2">ادامه خرید</a>
-            <a href="/Checkout" class="btn btn-success rounded-pill px-4">پرداخت</a>
-        </div>
-    }
-    else
-    {
-        <p class="text-center text-muted">سبد خرید شما خالی است.</p>
-        <div class="text-center mt-3">
-            <a href="/" class="btn btn-primary rounded-pill px-4">بازگشت به فروشگاه</a>
-        </div>
-    }
-</div>
+            <!-- دکمه ادامه خرید یا پرداخت -->
+            <div class="d-flex justify-content-end mt-4">
+                <a href="/" class="btn btn-primary rounded-pill px-4 me-2">ادامه خرید</a>
+                <a href="/Checkout" class="btn btn-success rounded-pill px-4">پرداخت</a>
+            </div>
+        }
+        else
+        {
+            <p class="text-center text-muted">سبد خرید شما خالی است.</p>
+            <div class="text-center mt-3">
+                <a href="/" class="btn btn-primary rounded-pill px-4">بازگشت به فروشگاه</a>
+            </div>
+        }
+    </div>
 
-<style>
-    /* جدول جذاب با hover */
-    table.table-hover tbody tr:hover {
-        background-color: rgba(0,123,255,0.1);
-    }
+    <style>
+        /* جدول جذاب با hover */
+        table.table-hover tbody tr:hover {
+            background-color: rgba(0,123,255,0.1);
+        }
 
-    /* دکمه حذف کوچک و گرد */
-    .btn-danger {
-        border-radius: 50%;
-        width: 35px;
-        height: 35px;
-        padding: 0;
-    }
-</style>
+        /* دکمه حذف کوچک و گرد */
+        .btn-danger {
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            padding: 0;
+        }
+    </style>
+
+}
+else
+{
+    <div class="alert alert-danger">فاکتوری برای شما وجود ندارد </div>
+}

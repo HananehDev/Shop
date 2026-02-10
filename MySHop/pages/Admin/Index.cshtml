@@ -1,0 +1,61 @@
+﻿@page
+@model MySHop.pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "admin";
+    Layout = "/Pages/Shared/_adminLayout.cshtml";
+}
+
+<div class="admin-header">
+    <h2>مدیریت محصولات</h2>
+    <a asp-page="Add" class="btn btn-success" >
+        ➕ افزودن محصول جدید
+    </a>
+</div>
+
+<div class="admin-card">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>عکس</th> <!-- ستون جدید عکس -->
+                <th>نام محصول</th>
+                <th>قیمت</th>
+                <th>موجودی</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td>@item.Id</td>
+
+                    <!-- ستون عکس -->
+                    <td>
+                        <img src="~/images/@(item.Id).jpg"
+                             alt="@item.Name"
+                             style="width:60px; height:60px; object-fit:cover; border-radius:6px;" />
+                    </td>
+
+                    <td>@item.Name</td>
+                    <td>@item.item.Price.ToString("N0") تومان</td>
+                    <td>
+                        @if (item.OrderDetail.Count > 0)
+                        {
+                            <span class="badge success">موجود</span>
+                        }
+                        else
+                        {
+                            <span class="badge danger">ناموجود</span>
+                        }
+                    </td>
+
+                    <td class="actions">
+                        <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-warning">✏️</a>
+                        <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-danger">🗑️</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

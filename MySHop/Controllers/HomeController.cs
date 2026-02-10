@@ -108,8 +108,19 @@ namespace MySHop.Controllers
         public IActionResult RemoveCart(int DetailId)
         {
             var orederDetail = _context.ordersDetails.Find(DetailId);
-            _context.Remove(orederDetail);
-            _context.SaveChanges();
+            if(orederDetail != null)
+            {
+                if(orederDetail.Count > 1)
+                {
+                    orederDetail.Count -= 1;
+                }
+                else
+                {
+                    _context.Remove(orederDetail);
+                }
+                _context.SaveChanges();
+            }
+
             return RedirectToAction("ShowCart");
         }
 

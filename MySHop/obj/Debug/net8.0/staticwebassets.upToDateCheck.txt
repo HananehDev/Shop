@@ -1,5 +1,10 @@
+wwwroot\css\admin.css
+wwwroot\css\bootstrap-rtl.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\Images\1.jpg
+wwwroot\Images\2.jpg
+wwwroot\Images\3.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -58,7 +63,3 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\css\bootstrap-rtl.css
-wwwroot\Images\3.jpg
-wwwroot\Images\1.jpg
-wwwroot\Images\2.jpg

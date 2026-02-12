@@ -31,8 +31,8 @@ namespace MySHop.pages.Admin
                 Price = product.Price,
                 QuantityInStock = product.QuantityInStock
             };
-            _Context.Add(item);
-            _Context.SaveChanges();
+            //_Context.Add(item);
+            
 
             var pro = new Product()
             {
@@ -42,8 +42,8 @@ namespace MySHop.pages.Admin
             };
             _Context.Add(pro);
             _Context.SaveChanges();
-            pro.item.Id = pro.Id;
-            _Context.SaveChanges();
+            //pro.item.Id = pro.Id;
+            //_Context.SaveChanges();
 
             if(product.Picture?.Length > 0)
             {

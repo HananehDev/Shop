@@ -83,55 +83,79 @@
     }
 
 /*-------------------------------Add Product*/
-<style >
-.admin-card {
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+/* فونت و بک‌گراند کلی */
+body {
+    background: #f4f6f9;
+    font-family: IRANSans, Tahoma, sans-serif;
+}
+
+/* تیتر صفحه */
+h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* کارت فرم */
+form {
     max-width: 600px;
-    margin: auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-.admin-card .form-group {
-    margin-bottom: 15px;
-}
-
-.admin-card label {
+/* لیبل‌ها */
+.form-group label {
     font-weight: 600;
-    color: #333;
+    margin-bottom: 6px;
+    color: #34495e;
+    display: block;
 }
 
-.admin-card input.form-control,
-.admin-card textarea.form-control {
-    border-radius: 8px;
-    border: 1px solid #ccc;
+/* اینپوت‌ها */
+.form-control {
+    border-radius: 6px;
+    border: 1px solid #dcdde1;
     padding: 10px;
-    font-size: 14px;
-    transition: all 0.3s;
+    transition: all 0.2s ease;
 }
 
-    .admin-card input.form-control:focus,
-    .admin-card textarea.form-control:focus {
-        border-color: #667eea;
-        box-shadow: 0 0 8px rgba(102, 126, 234, 0.4);
+    .form-control:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 2px rgba(52,152,219,0.15);
     }
 
-.btn-success {
-    background: #667eea;
+/* textarea */
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* خطاهای ولیدیشن */
+.text-danger {
+    font-size: 13px;
+    margin-top: 4px;
+    display: block;
+}
+
+/* دکمه ثبت */
+button.btn-success {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
     border: none;
-    font-size: 16px;
     padding: 12px;
-    border-radius: 50px;
+    font-size: 16px;
+    border-radius: 8px;
     font-weight: bold;
+    transition: all 0.25s ease;
 }
 
-    .btn-success:hover {
-        background: #5a67d8;
+    button.btn-success:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 15px rgba(102,126,234,0.3);
+        box-shadow: 0 6px 15px rgba(39,174,96,0.4);
     }
 
-</style >
-
-
+/* فاصله بهتر بین آیتم‌ها */
+.mb-3 {
+    margin-bottom: 18px;
+}

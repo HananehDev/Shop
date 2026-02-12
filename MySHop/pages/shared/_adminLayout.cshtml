@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+    
 
     
 </head>
+
 <body dir="rtl" >
     
     <div>
         @RenderBody()
     </div>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+

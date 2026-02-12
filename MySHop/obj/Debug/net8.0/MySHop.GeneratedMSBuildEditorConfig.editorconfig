@@ -34,6 +34,14 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = cGFnZXNcQWRtaW5cQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/visualstudio/C\#/MySHop/MySHop/pages/Admin/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = cGFnZXNcQWRtaW5cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/visualstudio/C\#/MySHop/MySHop/pages/Admin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = cGFnZXNcQWRtaW5cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/visualstudio/C\#/MySHop/MySHop/pages/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = cGFnZXNcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

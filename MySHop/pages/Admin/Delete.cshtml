@@ -1,0 +1,30 @@
+﻿@page
+@model MySHop.pages.Admin.DeleteModel
+@{
+    ViewData["Title"] = "حذف محصول ";
+}
+<form method="post">
+<div class="form-group mb-3">
+    <label asp-for="product.Name"></label>
+    <input asp-for="product.Name" class="form-control" readonly />
+    <span asp-validation-for="product.Name" class="text-danger"></span>
+</div>
+
+<div class="form-group mb-3">
+    <label asp-for="product.Description"></label>
+    <textarea asp-for="product.Description" class="form-control" readonly></textarea>
+    <span asp-validation-for="product.Description" class="text-danger"></span>
+</div>
+
+
+<div class="form-group mb-3">
+    <img src="/Images/@(Model.product.Id).jpg" style="max-width=200px" />
+</div>
+
+
+    <input type="hidden" asp-for="product.Id" />
+    <button type="submit" class="btn btn-success w-100">
+        حذف محصول
+    </button>
+</form>
+

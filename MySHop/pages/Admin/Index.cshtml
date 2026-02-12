@@ -38,9 +38,9 @@
                     </td>
 
                     <td>@item.Name</td>
-                    <td>@item.item.Price.ToString("N0") تومان</td>
+                    <td>@(item.item != null ? item.item.Price.ToString("N0") + " تومان" : "-")</td>
                     <td>
-                        @if (item.OrderDetail.Count > 0)
+                        @if (item.OrderDetail != null && item.OrderDetail.Count > 0)
                         {
                             <span class="badge success">موجود</span>
                         }

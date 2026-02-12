@@ -1,0 +1,52 @@
+﻿@page
+@model MySHop.pages.Admin.EditModel
+@{
+    ViewData["Title"] = "ویرایش";
+    Layout = "/Pages/Shared/_adminLayout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+
+<form method="post" enctype="multipart/form-data">
+    @* me for Edit on post  *@
+    <input type="hidden" asp-for="product.Id" />
+    @**@
+    <div class="form-group mb-3">
+        <label asp-for="product.ProductName"></label>
+        <input asp-for="product.ProductName" class="form-control" />
+        <span asp-validation-for="product.ProductName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="product.Description"></label>
+        <textarea asp-for="product.Description" class="form-control"></textarea>
+        <span asp-validation-for="product.Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="product.Price"></label>
+        <input asp-for="product.Price" class="form-control" />
+        <span asp-validation-for="product.Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="product.QuantityInStock"></label>
+        <input asp-for="product.QuantityInStock" class="form-control" />
+        <span asp-validation-for="product.QuantityInStock" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="product.Picture"></label>
+        <input asp-for="product.Picture" type="file" class="form-control" />
+        <span asp-validation-for="product.Picture" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">
+        ویرایش محصول 
+    </button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

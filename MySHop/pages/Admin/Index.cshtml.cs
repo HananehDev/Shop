@@ -6,6 +6,9 @@ using MySHop.Models;
 
 namespace MySHop.pages.Admin
 {
+    using Microsoft.AspNetCore.Authorization;
+
+    [Authorize]
     public class IndexModel : PageModel
     {
         private MyShopContext _context;

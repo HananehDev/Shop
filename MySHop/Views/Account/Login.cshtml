@@ -8,7 +8,13 @@
     <div class="login-card">
         <h2 class="title">ورود به حساب کاربری</h2>
         <p class="subtitle">خوش برگشتی 👋 وارد حسابت شو</p>
-
+        
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="alert alert-danger">
+                 شما به این صفحه دسترسی ندارید .
+            </div>
+        }
         <form asp-action="Login" method="post">
 
             <!-- ایمیل -->

@@ -79,6 +79,8 @@ namespace MySHop.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Name, user.Email),
+                new Claim("IsAdmin", user.IsAdmin.ToString()),
+
                 // new Claim("CodeMeli", user.Email),
             };
 

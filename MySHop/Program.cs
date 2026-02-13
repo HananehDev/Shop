@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using MySHop;
 using MySHop.Data;
 using MySHop.Data.Repositories;
+using MySHop.EndPoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,9 +59,10 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.Map("/Admin" , AdminEndPoints.MyHandler);
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
-

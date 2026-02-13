@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\visualstudio\\C#\\MySHop\\MySHop\\MySHop.csproj": {}
+    "E:\\visualstudio\\CSharp\\MySHop\\MySHop\\MySHop.csproj": {}
   },
   "projects": {
-    "E:\\visualstudio\\C#\\MySHop\\MySHop\\MySHop.csproj": {
+    "E:\\visualstudio\\CSharp\\MySHop\\MySHop\\MySHop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\visualstudio\\C#\\MySHop\\MySHop\\MySHop.csproj",
+        "projectUniqueName": "E:\\visualstudio\\CSharp\\MySHop\\MySHop\\MySHop.csproj",
         "projectName": "MySHop",
-        "projectPath": "E:\\visualstudio\\C#\\MySHop\\MySHop\\MySHop.csproj",
+        "projectPath": "E:\\visualstudio\\CSharp\\MySHop\\MySHop\\MySHop.csproj",
         "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-        "outputPath": "E:\\visualstudio\\C#\\MySHop\\MySHop\\obj\\",
+        "outputPath": "E:\\visualstudio\\CSharp\\MySHop\\MySHop\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -52,21 +52,27 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.23, )"
             }
           },
           "imports": [

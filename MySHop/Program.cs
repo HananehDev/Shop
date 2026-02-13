@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using MySHop;
 using MySHop.Data;
 using MySHop.Data.Repositories;
-using MySHop.EndPoints;
+//using MySHop.EndPoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,9 +57,12 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
+app.UseMiddleware<MyShop.Middlewares.AdminAccessMiddleware>();
+
 app.MapRazorPages();
 
-app.Map("/Admin" , AdminEndPoints.MyHandler);
+
+//app.Map("/Admin" , AdminEndPoints.MyHandler);
 
 app.MapControllerRoute(
     name: "default",

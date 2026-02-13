@@ -8,7 +8,7 @@ namespace MySHop.pages.Admin
 {
     using Microsoft.AspNetCore.Authorization;
 
-    [Authorize]
+    //[Authorize]
     public class IndexModel : PageModel
     {
         private MyShopContext _context;

@@ -1,31 +1,82 @@
-#  پروژه فروشگاه آنلاین
+# MyShop - Online Store Project
 
-یک پروژه فروشگاهی ساده و حرفه‌ای با **ASP.NET Core 8 (Razor Pages + MVC)** برای مدیریت محصولات، سبد خرید و پنل ادمین.
+A simple and professional e-commerce project built with **ASP.NET Core 8 (Razor Pages + MVC)** for managing products, shopping cart, and admin panel.
+
+---
+
+## 🚀 Features
+
+### User (Front-End)
+- View products with details (name, price, image, availability)
+- Add products to the shopping cart
+- Manage product quantity in the cart
+- Display total price and stock availability
+- Test checkout (no real payment gateway)
+
+### Admin Panel
+- **Razor Pages** for product CRUD operations
+- Add, edit, and delete products
+- Manage product images
+- Manage stock quantity and product prices
+- Display products in a modern table layout
+
+### Project Architecture
+- **Front-End:** MVC with Razor Views
+- **Admin Panel:** Razor Pages
+- **Database:** SQL Server with EF Core 8
+- **Models:** Product, Item, Order, OrderDetail, Users
+- **Authentication:** Cookie Authentication
 
 ---
 
-## 🚀 ویژگی‌ها
-
-### کاربر (Front-End)
-- مشاهده محصولات با جزئیات (نام، قیمت، تصویر، موجودی)
-- افزودن محصولات به سبد خرید
-- مدیریت تعداد محصول در سبد خرید
-- نمایش قیمت کل و موجودی
-- پرداخت تستی (بدون درگاه واقعی)
-
-### ادمین (Admin Panel)
--  برای CRUD محصولات **Razor Pages**
-- افزودن، ویرایش و حذف محصول
-- مدیریت تصاویر محصولات
-- مدیریت موجودی و قیمت محصولات
-- نمایش جدول محصولات با طراحی مدرن
-
-### معماری پروژه
-- الگوی MVC با Razor Views
-- **پنل ادمین:** Razor Pages
-- **دیتابیس:** SQL Server با EF Core 8
-- **مدل‌ها:** Product, Item, Order, OrderDetail, Users
-- **احراز هویت:** Cookie Authentication
+## 🛠 Tools and Technologies
+- ASP.NET Core 8.0
+- Entity Framework Core 8.0
+- SQL Server
+- Bootstrap 5 (CSS)
+- Visual Studio 2022
 
 ---
-#
+
+## ⚙️ Installation & Running
+
+1. Clone the repository:
+```bash
+git clone https://github.com/HananehDev/Shop.git
+cd MyShop
+```
+
+📝 Important Notes
+
+Product images are stored in /wwwroot/images/ and the filename is based on the product Id.
+
+Admin panel uses Razor Pages for fast and form-based CRUD operations.
+
+Front-End is built with MVC for dynamic product display and shopping cart functionality.
+
+User authentication uses cookies (valid for 10 days)
+
+---
+
+🧩 Development Tips
+
+For new pages in the Admin panel, use Razor Pages.
+
+When adding new tables or models, always create a Migration:
+
+dotnet ef migrations add AddNewTable
+dotnet ef database update
+
+---
+
+📌 Project Status
+
+Version: 1.0
+
+Status: Functional and ready for testing
+
+Ready for delivery to client
+
+---
+
+Built with ❤️ by Hananeh
